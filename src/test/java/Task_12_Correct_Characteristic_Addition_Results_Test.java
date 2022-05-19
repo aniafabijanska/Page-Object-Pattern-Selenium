@@ -13,6 +13,11 @@ public class Task_12_Correct_Characteristic_Addition_Results_Test extends Seleni
         String sampleName = "Test sample";
         String results = "8.0;9.0";
         String expMean = "8.5000";
+        String expUSL = "10.0000";
+        String expLSL = "8.0000";
+        String expDeviation = "0.7071";
+
+
 
         new LoginPage(driver)
                 .typeEmail(config.getApplicationUser())
@@ -30,7 +35,13 @@ public class Task_12_Correct_Characteristic_Addition_Results_Test extends Seleni
                 .sampleNameTxt(sampleName)
                 .resultsTxt(results)
                 .createResultsBtn()
-                .backToCharacteristics();
+                .backToCharacteristics()
+                .goToReport(characteristicName)
+                .assertMean(expMean)
+                .assertUSL(expUSL)
+                .assertLSL(expLSL)
+                .assertDeviation(expDeviation);
+
 
 
     }

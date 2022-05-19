@@ -36,10 +36,10 @@ public class RegistrationPage {
     @FindBy(css = ".validation-summary-errors>ul>li")
     public List<WebElement> loginErrors;
 
-    @FindBy (id = "ConfirmPassword-error")
+    @FindBy(id = "ConfirmPassword-error")
     public List<WebElement> confirmationPasswordErrors;
 
-    @FindBy (xpath = "//li")
+    @FindBy(xpath = "//li")
     public List<WebElement> passwordError;
 
 
@@ -81,7 +81,8 @@ public class RegistrationPage {
             if (confirmationPasswordErrors.get(i).getText().equals(expectedError)) {
                 doesErrorExists = true;
                 break;
-            }}
+            }
+        }
 
         Assert.assertTrue(doesErrorExists);
 
@@ -89,13 +90,14 @@ public class RegistrationPage {
 
     }
 
-    public RegistrationPage assertPasswordErrorIsShownUppercase (String expectedError) {
+    public RegistrationPage assertPasswordErrorIsShownUppercase(String expectedError) {
         boolean doesErrorExists = true;
         for (int i = 0; i < passwordError.size(); i++) {
             if (passwordError.get(i).getText().equals(expectedError)) {
                 doesErrorExists = false;
                 break;
-            }}
+            }
+        }
 
         Assert.assertTrue(doesErrorExists);
 

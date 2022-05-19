@@ -89,3 +89,5 @@ public class CharacteristicPage<goToResults, driver> extends HomePage {
 
 }
 
+
+
