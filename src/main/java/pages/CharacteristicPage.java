@@ -1,13 +1,12 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import java.io.EOFException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class CharacteristicPage<goToResults, driver> extends HomePage {
 
@@ -73,17 +72,38 @@ public class CharacteristicPage<goToResults, driver> extends HomePage {
 
     public ResultsPage goToResults(String characteristicName) {
         String resultsBtnXpath = String.format(GENERIC_CHARACTERISTIC_RESULTS_XPATH, characteristicName);
-        driver.findElement(By.xpath(resultsBtnXpath)).click();
 
-        return new ResultsPage(driver);
+
+        try {
+            driver.findElement(By.xpath(resultsBtnXpath)).click();
+            throw new Exception();
+        } catch(Exception e) {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+
+            WebElement goToResults = driver.findElement(By.xpath(resultsBtnXpath));
+            jse.executeScript("arguments[0].scrollIntoView()", goToResults);
+
+        }finally {
+            driver.findElement(By.xpath(resultsBtnXpath)).click();
+        }return new ResultsPage(driver);
     }
+
 
 
     public ReportPage goToReport(String characteristicName) {
         String reportBtnXpath = String.format(GENERIC_CHARACTERISTIC_REPORT_XPATH, characteristicName);
-        driver.findElement(By.xpath(reportBtnXpath)).click();
+                try {
+            driver.findElement(By.xpath(reportBtnXpath)).click();
+            throw new Exception();
+        } catch(Exception e) {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
 
-        return new ReportPage(driver);
+            WebElement goToResults = driver.findElement(By.xpath(reportBtnXpath));
+            jse.executeScript("arguments[0].scrollIntoView()", goToResults);
+
+        }finally {
+            driver.findElement(By.xpath(reportBtnXpath)).click();
+        }return new ReportPage(driver);
     }
 
 

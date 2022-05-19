@@ -37,6 +37,10 @@ public class HomePage {
     @FindBy(linkText = "Dashboard")
     private WebElement dashboardMenu;
 
+    public HomePage() {
+
+    }
+
 
     private boolean isParentExpanded(WebElement menuLink) {
         WebElement parent = menuLink.findElement(By.xpath("./.."));
