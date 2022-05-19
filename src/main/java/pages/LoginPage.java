@@ -1,9 +1,10 @@
 package pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
+
 
 import java.util.List;
 
@@ -54,24 +55,5 @@ public class LoginPage {
     public RegistrationPage submitRegister() {
         registerErrors.click();
         return new RegistrationPage(driver);
-    }
-
-    public LoginPage submitLoginWithFailure() {
-        loginBtn.click();
-        return this;
-    }
-
-
-    public LoginPage assertLoginErrorIsShown(String expectedError) {
-        boolean doesErrorExists = false;
-        for (int i=0; i<loginErrors.size(); i++){
-            if (loginErrors.get(i).getText().equals(expectedError)){
-                doesErrorExists = true;
-                break;
-            }
-        }
-        Assert.assertTrue(doesErrorExists);
-
-        return this;
     }
 }

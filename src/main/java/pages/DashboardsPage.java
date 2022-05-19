@@ -14,9 +14,11 @@ public class DashboardsPage extends HomePage {
 
     }
 
+    private String GENERIC_PROCESS_XPATH = "//h2[contains(text(),'%s')]";
+    private String GENERIC_CHARACTERISTIC_XPATH = "//p[contains(text(),'%s')]";
+
     @FindBy(css = ".x_title h2")
     private WebElement dashboardHeader;
-
 
     public DashboardsPage assertDashboardUrl(String pageUrl) {
         Assert.assertEquals(driver.getCurrentUrl(), pageUrl);
@@ -27,7 +29,7 @@ public class DashboardsPage extends HomePage {
         Assert.assertEquals(dashboardHeader.getText(), "DEMO PROJECT");
         return this;
     }
-    private String GENERIC_CHARACTERISTIC_XPATH = "//p[contains(text(),'%s')]";
+
     public DashboardsPage assertcharacteristicOnDashboard(String expCharacteristicName) {
         String characteristicXpath = String.format(GENERIC_CHARACTERISTIC_XPATH, expCharacteristicName);
         WebElement characteristic = driver.findElement(By.xpath(characteristicXpath));
@@ -36,9 +38,7 @@ public class DashboardsPage extends HomePage {
     }
 
 
-
-    private String GENERIC_PROCESS_XPATH = "//h2[contains(text(),'%s')]";
-    public DashboardsPage  assertProcessOnDashboard(String expProcessName) {
+    public DashboardsPage assertProcessOnDashboard(String expProcessName) {
         String characteristicXpath = String.format(GENERIC_PROCESS_XPATH, expProcessName);
         WebElement process = driver.findElement(By.xpath(characteristicXpath));
         Assert.assertTrue(process.isDisplayed());

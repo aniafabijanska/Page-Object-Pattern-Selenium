@@ -1,39 +1,41 @@
 package pages;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 import java.util.List;
 
-public class CharacteristicPage<goToResults> extends HomePage {
+public class CharacteristicPage<goToResults, driver> extends HomePage {
+
 
     private String GENERIC_CHARACTERISTIC_ROW_XPATH = "//td[text()='%s']/..";
+    private String GENERIC_CHARACTERISTIC_RESULTS_XPATH = "//td[text()='%s']/..//a[contains(@href, 'Results')]";
+    private String GENERIC_CHARACTERISTIC_REPORT_XPATH = "//td[text()='%s']/..//a[contains(@href, 'Report')]";
+
+
     public CharacteristicPage(WebDriver driver) {
         super(driver);
-
     }
 
-    @FindBy(css= ".page-title h3")
+
+    @FindBy(css = ".page-title h3")
     private WebElement characteristicHeader;
 
     @FindBy(linkText = "Add new characteristic")
     private WebElement addNewCharacteristicBtn;
 
 
-    /*WebElement goToResults = driver.findElement(By.xpath("//td[text()='%s']/..//a[contains(@href, 'Results'))"));
-    Actions actions = new Actions(driver);
-    actions.moveToElement(goToResults)
-    actions.perform();*/
-
-    public CharacteristicPage assertCharacteristicUrl (String pageUrl) {
+    public CharacteristicPage assertCharacteristicUrl(String pageUrl) {
         Assert.assertEquals(driver.getCurrentUrl(), pageUrl);
         return this;
     }
+
     public CharacteristicPage assertCharacteristicsHeader() {
-        Assert.assertEquals(characteristicHeader.getText(), "Characteristics" );
+        Assert.assertEquals(characteristicHeader.getText(), "Characteristics");
         return this;
     }
 
@@ -67,17 +69,17 @@ public class CharacteristicPage<goToResults> extends HomePage {
 
         return this;
     }
-    private String GENERIC_CHARACTERISTIC_RESULTS_XPATH = "//td[text()='%s']/..//a[contains(@href, 'Results')]";
 
-    public ResultsPage goToResults(String characteristicName){
+
+    public ResultsPage goToResults(String characteristicName) {
         String resultsBtnXpath = String.format(GENERIC_CHARACTERISTIC_RESULTS_XPATH, characteristicName);
         driver.findElement(By.xpath(resultsBtnXpath)).click();
 
         return new ResultsPage(driver);
     }
-    private String GENERIC_CHARACTERISTIC_REPORT_XPATH = "//td[text()='%s']/..//a[contains(@href, 'Report')]";
 
-    public ReportPage goToReport(String characteristicName){
+
+    public ReportPage goToReport(String characteristicName) {
         String reportBtnXpath = String.format(GENERIC_CHARACTERISTIC_REPORT_XPATH, characteristicName);
         driver.findElement(By.xpath(reportBtnXpath)).click();
 

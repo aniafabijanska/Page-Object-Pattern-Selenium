@@ -5,12 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import pages.HomePage;
+
 
 import java.util.List;
 
 public class RegistrationPage {
     protected WebDriver driver;
+
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
@@ -73,25 +74,7 @@ public class RegistrationPage {
         registerBtn.click();
         return this;
     }
-    public RegistrationPage assertEmailErrorIsShown(String expError) {
-        Assert.assertTrue(emailError.isDisplayed());
-        Assert.assertEquals(emailError.getText(), expError);
-        return this;
-    }
 
-    public RegistrationPage assertLoginErrorIsShown(String expectedError) {
-        boolean doesErrorExists = false;
-        for (int i = 0; i < loginErrors.size(); i++) {
-            if (loginErrors.get(i).getText().equals(expectedError)) {
-                doesErrorExists = true;
-                break;
-            }}
-
-        Assert.assertTrue(doesErrorExists);
-
-        return this;
-
-    }
     public RegistrationPage assertPasswordErrorIsShown(String expectedError) {
         boolean doesErrorExists = false;
         for (int i = 0; i < confirmationPasswordErrors.size(); i++) {

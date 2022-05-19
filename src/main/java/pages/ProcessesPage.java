@@ -1,7 +1,5 @@
 package pages;
 
-
-
 import config.Config;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +13,7 @@ public class ProcessesPage extends HomePage {
 
     private String PAGE_URL = new Config().getApplicationUrl() + "Projects";
 
+    private String GENERIC_PROCESS_ROW_XPATH = "//td[text()='%s']/..";
 
     public ProcessesPage(WebDriver driver) {
         super(driver);
@@ -45,7 +44,6 @@ public class ProcessesPage extends HomePage {
         return this;
     }
 
-    private String GENERIC_PROCESS_ROW_XPATH = "//td[text()='%s']/..";
 
     public ProcessesPage assertProcess(String expName, String expDescription, String expNotes) {
         String processXpath = String.format(GENERIC_PROCESS_ROW_XPATH, expName);
@@ -63,13 +61,6 @@ public class ProcessesPage extends HomePage {
 
     public ProcessesPage assertProcessIsNotShown(String processName) {
         String processXpath = String.format(GENERIC_PROCESS_ROW_XPATH, processName);
-        List<WebElement> process = driver.findElements(By.xpath(processXpath));
-        Assert.assertEquals(process.size(), 0);
-
-        return this;
-    }
-    public ProcessesPage assertCharacteristicIsNotShown(String characteristicName) {
-        String processXpath = String.format(GENERIC_PROCESS_ROW_XPATH, characteristicName);
         List<WebElement> process = driver.findElements(By.xpath(processXpath));
         Assert.assertEquals(process.size(), 0);
 

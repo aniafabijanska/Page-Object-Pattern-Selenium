@@ -5,10 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class CreateProcessPage extends HomePage{
-        public CreateProcessPage(WebDriver driver) {
-            super(driver);
-        }
+public class CreateProcessPage extends HomePage {
+    public CreateProcessPage(WebDriver driver) {
+        super(driver);
+    }
+
     @FindBy(id = "Name")
     private WebElement nameTxt;
 
@@ -40,6 +41,7 @@ public class CreateProcessPage extends HomePage{
         createBtn.click();
         return new ProcessesPage(driver);
     }
+
     public CreateProcessPage clickCreateNewProcessesWithFailure() {
 
         createBtn.click();
@@ -47,13 +49,11 @@ public class CreateProcessPage extends HomePage{
     }
 
 
-
     public CreateProcessPage assertProcessNameError(String errorMessage) {
         Assert.assertTrue(nameError.isDisplayed(), "The field Name must be a string with a minimum length of 3 and a maximum length of 30.");
 
         return this;
     }
-
 
 
 }

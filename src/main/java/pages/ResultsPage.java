@@ -20,9 +20,11 @@ public class ResultsPage extends HomePage {
         clickAddResultSampleBtn.click();
         return new CreateResultsPage(driver);
 
-}
-    public CharacteristicPage backToCharacteristics(){
+    }
+
+    public CharacteristicPage backToCharacteristics() {
         backBtn.click();
 
-        return new CharacteristicPage (driver);
-}}
+        return new CharacteristicPage(driver);
+    }
+}

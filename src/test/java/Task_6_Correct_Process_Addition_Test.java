@@ -3,7 +3,7 @@ import pages.LoginPage;
 
 import java.util.UUID;
 
-public class Task_6_Correct_Process_Addition_Test extends SeleniumBaseTest{
+public class Task_6_Correct_Process_Addition_Test extends SeleniumBaseTest {
 
 
     @Test

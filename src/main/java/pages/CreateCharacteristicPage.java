@@ -13,6 +13,7 @@ public class CreateCharacteristicPage extends HomePage{
     public CreateCharacteristicPage(WebDriver driver) {
             super(driver);
         }
+
     @FindBy(id = "ProjectId")
     private WebElement projectSlc;
 
