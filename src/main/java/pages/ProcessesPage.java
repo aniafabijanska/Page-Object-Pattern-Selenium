@@ -50,8 +50,8 @@ public class ProcessesPage extends HomePage {
 
         WebElement processRow = driver.findElement(By.xpath(processXpath));
 
-        String actDescription = processRow.findElement(By.xpath("./h2")).getText();
-        String actNotes = processRow.findElement(By.xpath("./h2")).getText();
+        String actDescription = processRow.findElement(By.xpath("./td[2]")).getText();
+        String actNotes = processRow.findElement(By.xpath("./td[2]")).getText();
 
         Assert.assertEquals(actDescription, expDescription);
         Assert.assertEquals(actNotes, expNotes);
