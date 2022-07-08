@@ -1,6 +1,8 @@
 The project contains the automated end-2-end test suite to the process control web-app.
 
-You need - chromedriver and SPC Our website "http: // localhost: 4444 /"
+You need - chromedriver and SPC 
+You can also use docker - you need to invoke docker-compose up -d command in the root directory of your project (where the docerfile is). 
+Now you have access the app under http://localhost:4444/.
 
 Test Scenerios:
 
